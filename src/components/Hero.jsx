@@ -1,67 +1,59 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowDown } from 'react-icons/fi';
+import { Link } from 'react-scroll';
 
-const Hero = ({ image }) => {
-  const scrollToNext = () => {
-    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-  };
-
+const Hero = ({ image1 }) => {
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-dark-bg">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{
-          backgroundImage: `url(${image})`,
-          filter: 'brightness(0.4)'
-        }}
-      />
+    <motion.section
+      id="inicio"
+      className="relative w-full h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
+      style={{
+        backgroundImage: `url(${image1})`,
+        backgroundAttachment: 'fixed',
+      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70"></div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
+        <motion.h1
+          className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-4"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
         >
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
-            CÍRCULO DT
-          </h1>
-        </motion.div>
+          CÍRCULO DT
+        </motion.h1>
+
+        <motion.p
+          className="text-xl sm:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
+          "Un grupo de estudiantes unidos por la amistad, el respeto y los mejores recuerdos."
+        </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
         >
-          <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl drop-shadow-lg">
-            Un grupo de estudiantes unidos por la amistad, el respeto y los mejores recuerdos.
-          </p>
+          <Link
+            to="quienes-somos"
+            spy
+            smooth
+            offset={-60}
+            className="inline-block px-8 py-4 bg-gradient-to-r from-primary-green to-primary-red hover:shadow-glow text-white font-bold rounded-lg transition cursor-pointer transform hover:scale-105"
+          >
+            CONOCE MÁS
+          </Link>
         </motion.div>
-
-        <motion.button
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={scrollToNext}
-          className="px-8 py-3 bg-primary-green text-white font-bold rounded-lg hover:bg-green-600 transition-colors shadow-lg"
-        >
-          CONOCE MÁS
-        </motion.button>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <FiArrowDown className="text-white text-3xl" />
-      </motion.div>
-    </div>
+    </motion.section>
   );
 };
 

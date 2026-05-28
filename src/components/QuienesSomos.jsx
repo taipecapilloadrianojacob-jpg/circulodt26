@@ -1,70 +1,53 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
-const QuienesSomos = ({ image }) => {
+const QuienesSomos = ({ image2 }) => {
   return (
-    <section className="py-20 px-4 bg-dark-bg">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-        >
-          {/* Image */}
+    <motion.section
+      id="quienes-somos"
+      className="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-dark-bg"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Image - Left */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="hidden md:block"
+            className="order-2 lg:order-1"
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
             <img
-              src={image}
-              alt="Quiénes Somos"
-              className="rounded-2xl shadow-2xl w-full h-auto object-cover"
+              src={image2}
+              alt="¿Quiénes Somos?"
+              className="w-full h-auto rounded-2xl shadow-2xl"
             />
           </motion.div>
 
-          {/* Content */}
+          {/* Text - Right */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="order-1 lg:order-2"
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              ¿QUIÉNES SOMOS?
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+              ¿Quiénes <span className="text-primary-green">Somos?</span>
             </h2>
-
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="text-lg text-gray-300 mb-4 leading-relaxed">
               CÍRCULO DT es un grupo de estudiantes de 1° y 2° de secundaria que comparte experiencias, actividades, aprendizajes y momentos importantes dentro del colegio.
             </p>
-
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="text-lg text-gray-300 leading-relaxed">
               Nuestro objetivo es fortalecer la amistad, el respeto y el compañerismo entre todos los integrantes.
             </p>
-
-            <div className="pt-4">
-              <div className="w-20 h-1 bg-primary-green rounded-full"></div>
-            </div>
           </motion.div>
-
-          {/* Mobile Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="md:hidden"
-          >
-            <img
-              src={image}
-              alt="Quiénes Somos"
-              className="rounded-2xl shadow-2xl w-full h-auto object-cover"
-            />
-          </motion.div>
-        </motion.div>
+        </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
